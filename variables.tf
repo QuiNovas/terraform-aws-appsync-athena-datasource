@@ -19,7 +19,7 @@ variable "athena_schema_name" {
   type        = "string"
 }
 
-variable "datalake_policy_arn" {
+variable "athena_datasource_policy_arn" {
   description = "The arn of the iam policy that needs to be attached to the resolver lambda. This policy must be having read permissions to underlying datasource, which can be s3/dynamo etc and also access to KMS key used to decrypt the datasource"
   type        = "string"
 }

@@ -10,11 +10,11 @@ module "appsync_athena_resolver" {
   handler         = "function.handler"
   kms_key_arn     = "${var.kms_key_arn}"
   l3_object_key   = "quinovas/appsync-athena-resolver/appsync-athena-resolver-0.0.2.zip"
-  name            = "${var.name_prefix}-appsync-athena-resolver"
+  name            = "${var.name_prefix}appsync-athena-resolver"
 
   policy_arns = [
     "${aws_iam_policy.appsync_athena_resolver.arn}",
-    "${var.datalake_policy_arn}",
+    "${var.athena_datasource_policy_arn}",
   ]
 
   policy_arns_count = 2
@@ -25,20 +25,15 @@ module "appsync_athena_resolver" {
 }
 
 resource "aws_iam_policy" "appsync_athena_resolver" {
-  name   = "${var.name_prefix}-appsync-athena-resolver"
+  name   = "${var.name_prefix}appsync-athena-resolver"
   policy = "${data.aws_iam_policy_document.appsync_athena_resolver.json}"
-}
-
-resource "random_string" "random_string" {
-  length = 6
-  special = false
 }
 
 module "appsync_lambda_datasource" {
   api_id                   = "${var.api_id}"
   invoke_lambda_policy_arn = "${module.appsync_athena_resolver.invoke_policy_arn}"
   lambda_function_arn      = "${module.appsync_athena_resolver.arn}"
-  name                     = "Athena_${random_string.random_string.result}"
+  name                     = "${replace("${var.name_prefix}","-","_")}Athena"
   source                   = "QuiNovas/appsync-lambda-datasource/aws"
   version                  = "1.0.1"
 }
