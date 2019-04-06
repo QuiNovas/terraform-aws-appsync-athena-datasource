@@ -24,6 +24,12 @@ variable "athena_datasource_policy_arn" {
   type        = "string"
 }
 
+variable "aws_athena_region_name" {
+  default     = ""
+  description = "The AWS region for Athena that this function should use. Defaults to the region that the function is executing in."
+  type        = "string"
+}
+
 variable "dead_letter_arn" {
   description = "The arn for the SNS topic that handles dead letters"
   type        = "string"
