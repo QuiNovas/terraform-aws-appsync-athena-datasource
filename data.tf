@@ -47,3 +47,5 @@ data "aws_iam_policy_document" "appsync_athena_resolver" {
     sid = "ReadWriteResultFiles"
   }
 }
+
+data "aws_region" "current" {}
