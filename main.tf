@@ -10,7 +10,7 @@ module "appsync_athena_resolver" {
   dead_letter_arn = "${var.dead_letter_arn}"
   handler         = "function.handler"
   kms_key_arn     = "${var.kms_key_arn}"
-  l3_object_key   = "quinovas/appsync-athena-resolver/appsync-athena-resolver-0.2.0.zip"
+  l3_object_key   = "quinovas/appsync-athena-resolver/appsync-athena-resolver-0.3.0.zip"
   name            = "${var.name_prefix}appsync-athena-resolver"
 
   policy_arns = [
@@ -19,7 +19,7 @@ module "appsync_athena_resolver" {
   ]
 
   policy_arns_count = 2
-  runtime           = "python2.7"
+  runtime           = "python3.7"
   source            = "QuiNovas/lambdalambdalambda/aws"
   timeout           = 30
   version           = "0.2.0"
