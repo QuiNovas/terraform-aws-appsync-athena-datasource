@@ -21,7 +21,7 @@ module "appsync_athena_resolver" {
   policy_arns_count = 2
   runtime           = "python3.7"
   source            = "QuiNovas/lambdalambdalambda/aws"
-  timeout           = 30
+  timeout           = 120
   version           = "0.2.0"
 }
 
