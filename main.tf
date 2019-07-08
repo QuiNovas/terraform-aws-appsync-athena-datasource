@@ -17,12 +17,10 @@ module "appsync_athena_resolver" {
     aws_iam_policy.appsync_athena_resolver.arn,
     var.athena_datasource_policy_arn,
   ]
-
-  policy_arns_count = 2
   runtime           = "python3.7"
   source            = "QuiNovas/lambdalambdalambda/aws"
   timeout           = 120
-  version           = "3.0.0"
+  version           = "3.0.1"
 }
 
 resource "aws_iam_policy" "appsync_athena_resolver" {
