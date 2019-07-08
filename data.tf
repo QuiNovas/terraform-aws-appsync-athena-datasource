@@ -36,16 +36,18 @@ data "aws_iam_policy_document" "appsync_athena_resolver" {
       "s3:ListBucket",
       "s3:ListBucketMultipartUploads",
       "s3:ListMultipartUploadParts",
-      "s3:PutObject"
+      "s3:PutObject",
     ]
 
     resources = [
       "${var.athena_s3_arn}/*",
-      "${var.athena_s3_arn}",
+      var.athena_s3_arn,
     ]
 
     sid = "ReadWriteResultFiles"
   }
 }
 
-data "aws_region" "current" {}
+data "aws_region" "current" {
+}
+
