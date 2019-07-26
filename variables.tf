@@ -55,6 +55,6 @@ variable "name_prefix" {
 variable "poll_interval" {
   default     = "1.0"
   description = "The rate at which to poll Athena for a response, in seconds. Defaults to 1.0."
-  type        = number
+  type        = string
 }
 
