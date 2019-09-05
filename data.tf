@@ -37,6 +37,7 @@ data "aws_iam_policy_document" "appsync_athena_resolver" {
       "s3:ListBucketMultipartUploads",
       "s3:ListMultipartUploadParts",
       "s3:PutObject",
+      "s3:GetBucketLocation",
     ]
 
     resources = [
