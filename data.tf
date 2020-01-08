@@ -11,7 +11,7 @@ data "aws_iam_policy_document" "non_default_staging_dir_access" {
     ]
 
     resources = [
-      "${var.athenaathena_s3_staging_arn_s3_arn}/*",
+      "${var.athena_s3_staging_arn}/*",
       var.athena_s3_staging_arn,
     ]
 
