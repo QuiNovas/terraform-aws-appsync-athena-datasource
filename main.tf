@@ -14,7 +14,7 @@ module "appsync_athena_resolver" {
   name            = "${var.name_prefix}appsync-athena-resolver"
 
   policy_arns = [
-    "arn:aws:iam::aws:policy/AmazonAthenaFullAccess"
+    "arn:aws:iam::aws:policy/AmazonAthenaFullAccess",
     aws_iam_policy.non_default_staging_dir_access.arn,
     var.athena_datasource_policy_arn,
   ]
