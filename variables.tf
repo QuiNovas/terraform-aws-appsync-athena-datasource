@@ -3,7 +3,7 @@ variable "api_id" {
   type        = string
 }
 
-variable "athena_s3_arn" {
+variable "athena_s3_staging_arn" {
   description = "S3 bucket arn that Athena will store the query results in"
   type        = string
 }
@@ -57,4 +57,3 @@ variable "poll_interval" {
   description = "The rate at which to poll Athena for a response, in seconds. Defaults to 1.0."
   type        = string
 }
-
