@@ -1,4 +1,34 @@
-data "aws_iam_policy_document" "non_default_staging_dir_access" {
+data "aws_iam_policy_document" "appsync_athena_resolver" {
+  statement {
+    actions = [
+      "athena:BatchGetQueryExecution",
+      "athena:CancelQueryExecution",
+      "athena:GetCatalogs",
+      "athena:GetExecutionEngine",
+      "athena:GetExecutionEngines",
+      "athena:GetNamespace",
+      "athena:GetNamespaces",
+      "athena:GetQueryExecution",
+      "athena:GetQueryExecutions",
+      "athena:GetQueryResults",
+      "athena:GetQueryResultsStream",
+      "athena:GetTable",
+      "athena:GetTables",
+      "athena:ListQueryExecutions",
+      "athena:RunQuery",
+      "athena:StartQueryExecution",
+      "athena:StopQueryExecution",
+      "glue:GetTable",
+      "glue:GetPartitions",
+    ]
+
+    resources = [
+      "*",
+    ]
+
+    sid = "AllowAthenaAccess"
+  }
+
   statement {
     actions = [
       "s3:AbortMultipartUpload",
@@ -11,8 +41,8 @@ data "aws_iam_policy_document" "non_default_staging_dir_access" {
     ]
 
     resources = [
-      "${var.athenaathena_s3_staging_arn_s3_arn}/*",
-      var.athena_s3_staging_arn,
+      "${var.athena_s3_arn}/*",
+      var.athena_s3_arn,
     ]
 
     sid = "ReadWriteResultFiles"

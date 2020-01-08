@@ -14,8 +14,7 @@ module "appsync_athena_resolver" {
   name            = "${var.name_prefix}appsync-athena-resolver"
 
   policy_arns = [
-    "arn:aws:iam::aws:policy/AmazonAthenaFullAccess"
-    aws_iam_policy.non_default_staging_dir_access.arn,
+    aws_iam_policy.appsync_athena_resolver.arn,
     var.athena_datasource_policy_arn,
   ]
   runtime           = "python3.7"
@@ -24,9 +23,9 @@ module "appsync_athena_resolver" {
   version           = "3.0.1"
 }
 
-resource "aws_iam_policy" "non_default_staging_dir_access" {
-  name   = "${var.name_prefix}appsync-athena-resolver-staging-s3-access"
-  policy = data.aws_iam_policy_document.non_default_staging_dir_access.json
+resource "aws_iam_policy" "appsync_athena_resolver" {
+  name   = "${var.name_prefix}appsync-athena-resolver"
+  policy = data.aws_iam_policy_document.appsync_athena_resolver.json
 }
 
 module "appsync_lambda_datasource" {
