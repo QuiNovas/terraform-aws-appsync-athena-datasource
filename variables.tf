@@ -57,4 +57,3 @@ variable "poll_interval" {
   description = "The rate at which to poll Athena for a response, in seconds. Defaults to 1.0."
   type        = string
 }
-
