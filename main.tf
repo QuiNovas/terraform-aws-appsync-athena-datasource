@@ -11,6 +11,7 @@ module "appsync_athena_resolver" {
   handler         = "function.handler"
   kms_key_arn     = var.kms_key_arn
   l3_object_key   = "quinovas/appsync-athena-resolver/appsync-athena-resolver-0.3.1.zip"
+  memory_size     = var.memory_size
   name            = "${var.name_prefix}appsync-athena-resolver"
 
   policy_arns = [
@@ -18,10 +19,10 @@ module "appsync_athena_resolver" {
     aws_iam_policy.non_default_staging_dir_access.arn,
     var.athena_datasource_policy_arn,
   ]
-  runtime           = "python3.7"
-  source            = "QuiNovas/lambdalambdalambda/aws"
-  timeout           = 120
-  version           = "3.0.1"
+  runtime = "python3.7"
+  source  = "QuiNovas/lambdalambdalambda/aws"
+  timeout = var.timeout
+  version = "3.0.1"
 }
 
 resource "aws_iam_policy" "non_default_staging_dir_access" {
