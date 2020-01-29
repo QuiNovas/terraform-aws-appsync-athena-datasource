@@ -10,7 +10,7 @@ module "appsync_athena_resolver" {
   dead_letter_arn = var.dead_letter_arn
   handler         = "function.handler"
   kms_key_arn     = var.kms_key_arn
-  l3_object_key   = "quinovas/appsync-athena-resolver/appsync-athena-resolver-0.3.1.zip"
+  l3_object_key   = "quinovas/appsync-athena-resolver/appsync-athena-resolver-0.3.2.zip"
   memory_size     = var.memory_size
   name            = "${var.name_prefix}appsync-athena-resolver"
 
