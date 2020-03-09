@@ -1,4 +1,5 @@
 data "aws_iam_policy_document" "non_default_staging_dir_access" {
+  count = var.athena_s3_staging_arn == "" ? 0 : 1
   statement {
     actions = [
       "s3:AbortMultipartUpload",
