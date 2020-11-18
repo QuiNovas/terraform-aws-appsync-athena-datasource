@@ -17,7 +17,7 @@ module "appsync_athena_resolver" {
   runtime         = "python3.7"
   source          = "QuiNovas/lambdalambdalambda/aws"
   timeout         = var.timeout
-  version         = "3.0.1"
+  version         = "3.0.4"
 }
 
 resource "aws_iam_policy" "non_default_staging_dir_access" {
@@ -32,6 +32,6 @@ module "appsync_lambda_datasource" {
   lambda_function_arn      = module.appsync_athena_resolver.arn
   name                     = "${replace(var.name_prefix, "-", "_")}Athena"
   source                   = "QuiNovas/appsync-lambda-datasource/aws"
-  version                  = "3.0.0"
+  version                  = "3.0.4"
 }
 
